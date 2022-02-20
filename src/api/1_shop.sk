@@ -59,12 +59,12 @@ function shop_getItem(category: string, id: string) :: item:
 	return {{@storage}::categories::%{category}%::items::%{_id}%::item}
 
 # Get Sell Price
-function shop_getSellPrice(category: string, id: string) :: item:
+function shop_getSellPrice(category: string, id: string) :: number:
 	{{@storage}::categories::%{category}%::items::%{_id}%::sell} > 0
 	return {{@storage}::categories::%{category}%::items::%{_id}%::sell}
 
 # Get Buy Price
-function shop_getBuyPrice(category: string, id: string) :: item:
+function shop_getBuyPrice(category: string, id: string) :: number:
 	{{@storage}::categories::%{category}%::items::%{_id}%::buy} > 0
 	return {{@storage}::categories::%{category}%::items::%{_id}%::buy}
 
