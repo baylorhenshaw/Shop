@@ -1,0 +1,61 @@
+#
+#	Shop Menus 1.0.0
+#	
+#	Created for as a commission for PlayInABox.
+#	Copyright © 2021 Baylor Henshaw <baylor@henshaw.me>
+#
+#	Written by Baylor Henshaw (https://baezor.com/)
+#
+
+#
+#	Shop Menu Options
+#
+
+# Options
+options:
+	
+	# Style Options - Menu Items
+	shop.style.background: black stained glass pane
+	shop.style.filler: stone button
+
+	shop.style.buttons.back: red stained glass pane
+	shop.style.buttons.current_amount: writable book
+	shop.style.buttons.increase_count: orange stained glass pane
+	shop.style.buttons.decrease_count: yellow stained glass pane
+	shop.style.buttons.page_increase: arrow
+	shop.style.buttons.page_decrease: arrow
+
+	# Style Options - Colors & Lore
+	shop.style.item.format: "&d%{_itemName}%" with lore "&7" and "&aCost: $%{_cost}%"
+	shop.style.buttons.page_increase.format: ""
+
+
+
+#
+#	Menu API
+#
+
+# Open Main Menu
+function shop_openMainMenu(player: player):
+	
+	set metadata tag "shop.mainMenu" of {_player} to chest inventory with 5 rows named "Shop"
+
+	loop integers between 0 and 44:
+		set slot loop-integer of metadata tag "shop.mainMenu" of {_player} to black stained glass pane named "&7"
+
+	open (metadata tag "shop.mainMenu" of {_player}) to {_player}
+
+on inventory click:
+	if event-inventory = (metadata tag "shop.mainMenu" of player):
+		cancel event
+		set {_tag} to shop_getCustomItemData(event-item)
+		{_tag} is set
+
+#
+#	Misc Functions
+#
+
+# Get NBT Data
+function shop_getCustomItemData(item: item) :: string:
+	set {_tag} to tag "MenuData" of {_item}'s nbt
+	return {_tag}
