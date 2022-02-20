@@ -3,4 +3,5 @@ on load:
 	
 	shop_registerCategory("Example", diamond, 22)
 
-	shop_registerItem("Example", "stone", stone, 10, 1)
+	shop_registerItem("Example", "Stone", stone, 10, 0)
+	shop_registerItem("Example", "Cool Bricks", stone bricks named "cool bricks", 10, 0)
