@@ -25,7 +25,7 @@ function shop_registerCategory(id: string, icon: item, slot: number):
 	set {{@storage}::categories::%{_id}%::slot} to {_slot}
 
 # Register Shop Item
-function shop_registerCategory(category: string, id: string, item: item, buy: number = 0, sell: number = 0):
+function shop_registerItem(category: string, id: string, item: item, buy: number = 0, sell: number = 0):
 	{{@storage}::categories::*} contains {_category}
 	{{@storage}::categories::%{category}%::items::*} does not contain {_id}
 	add {_id} to {{@storage}::categories::%{category}%::items::*}
@@ -37,6 +37,16 @@ function shop_registerCategory(category: string, id: string, item: item, buy: nu
 function shop_getCategories() :: strings:
 	{{@storage}::categories::*} is set
 	return {{@storage}::categories::*}
+
+# Get Icon
+function shop_getCategoryIcon(category: string) :: item:
+	{{@storage}::categories::%{_category}%::icon} is set
+	return {{@storage}::categories::%{_category}%::icon}
+
+# Get Slot
+function shop_getCategorySlot(category: string) :: number:
+	{{@storage}::categories::%{_category}%::slot} is set
+	return {{@storage}::categories::%{_category}%::slot}
 
 # Get Items
 function shop_getItems(category: string) :: strings:
