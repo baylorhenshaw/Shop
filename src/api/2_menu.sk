@@ -43,7 +43,9 @@ options:
 	shop.style.buttons.decrease_count.slot: 3
 
 	# Style Options - Colors & Lore
-	shop.style.item.format: named "&d%{_itemName}%" with lore "&7" and "&aCost: $%{_cost}%"
+	shop.style.item.format.both: named "&d%{_id}%" with lore "&7", "&aCost: $%{_buy}%" and "&cSell: $%{_sell}%"
+	shop.style.item.format.buy: named "&d%{_id}%" with lore "&7" and "&aCost: $%{_buy}%"
+	shop.style.item.format.sell: named "&d%{_id}%" with lore "&7" and "&cSell: $%{_sell}%"
 
 	shop.style.category.format: named "&d%{_category}%" with lore "&bClick to Open!"
 
@@ -79,6 +81,11 @@ function shop_openMainMenu(player: player):
 # Open Category
 function shop_openCategory(player: player, category: string, page: number = 1, amount: number = 4):
 	
+	if {_amount} < 4:
+		set {_amount} to 4
+	else if {_amount} > 64:
+		set {_amount} to 64
+
 	play sound "ui.button.click" to {_player}
 	
 	set metadata tag "shop.current" of {_player} to chest inventory with 5 rows named "&r%{_category}%"
@@ -89,6 +96,10 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 	loop (integers between 10 and 16, integers between 19 and 25 and integers between 28 and 34):
 		set slot loop-integer of metadata tag "shop.current" of {_player} to {@shop.style.filler} named "&7"
 
+	set {_back} to {@shop.style.buttons.back}
+	set {_back} to shop_applyCommand({_back}, "open:main")
+	set slot {@shop.style.buttons.back.slot} of metadata tag "shop.current" of {_player} to {_back}
+
 	set {_minLoop} to (21*{_page})-21 
 	set {_loops} to 0
 	set {_slot} to 10
@@ -98,9 +109,23 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 	loop {_i::*}:
 		if {_loops} is greater than or equal to {_minLoop}:
 
+			set {_id} to loop-value
 			set {_item} to shop_getItem({_category}, loop-value)
+			set {_buy} to shop_getBuyPrice({_category}, loop-value)
+			set {_sell} to shop_getSellPrice({_category}, loop-value)
+			set {_item} to shop_applyCommand({_item}, "id:%{_id}%,category:%{_category}%,amount:%{_amount}%,buy:left,sell:right")
 
-			set slot {_slot} of metadata tag "shop.current" of {_player} to {_item}
+			if {_buy} > 0:
+				if {_sell} > 0:
+					set {_item} to {_item} {@shop.style.item.format.both}
+				else:
+					set {_item} to {_item} {@shop.style.item.format.buy}
+			else if {_sell} > 0:
+				set {_item} to {_item} {@shop.style.item.format.sell}
+			else:
+				set {_item} to red dye named "&cnull"
+
+			set slot {_slot} of metadata tag "shop.current" of {_player} to {_amount} of {_item}
 
 			add 1 to {_slot}
 			if {_slot} is 17 or 26:
@@ -119,15 +144,16 @@ on inventory click:
 		cancel event
 		set {_tag} to shop_getCustomItemData(event-item)
 		{_tag} is set
-		shop_executeTag(player, {_tag})
+		shop_executeTag(player, {_tag}, "%click type%")
 	else if event-inventory = (metadata tag "shop.current" of player):
 		cancel event
 		set {_tag} to shop_getCustomItemData(event-item)
 		{_tag} is set
-		shop_executeTag(player, {_tag})
+		shop_executeTag(player, {_tag}, "%click type%")
 
 # Parse Input Actions from Tag
-function shop_executeTag(player: player, tag: string):
+function shop_executeTag(player: player, tag: string, click: string):
+	message "&3DEBUG: &7&oExecuting &b%{_tag}%" to {_player}
 	if {_tag} contains ",":
 		set {_s::*} to {_tag} split at ","
 		set {_cmds::*} to {_s::*}
@@ -137,13 +163,38 @@ function shop_executeTag(player: player, tag: string):
 	loop {_cmds::*}:
 		set {_tagSplit::*} to loop-value split at ":"
 		if {_tagSplit::1} is "open":
-			set {_ns::*} to {_tagSplit::2} split at "^"
-			set {_category} to {_ns::1}
-			set {_page} to {_ns::2} parsed as a number
-			set {_amount} to {_ns::3} parsed as a number
-			shop_openCategory({_player}, {_category}, {_page}, {_amount})
+			if {_tagSplit::2} contains "^":
+				set {_ns::*} to {_tagSplit::2} split at "^"
+				set {_category} to {_ns::1}
+				set {_page} to {_ns::2} parsed as a number
+				set {_amount} to {_ns::3} parsed as a number
+				shop_openCategory({_player}, {_category}, {_page}, {_amount})
+			else if {_tagSplit::2} is "main":
+				shop_openMainMenu({_player})
+
+		else if {_tagSplit::1} is "id":
+			set {_id} to {_tagSplit::2}
+
+		else if {_tagSplit::1} is "category":
+			set {_category} to {_tagSplit::2}
+
+		else if {_tagSplit::1} is "amount":
+			set {_amount} to {_tagSplit::2} parsed as a number
+
 		else if {_tagSplit::1} is "close":
 			close {_player}'s inventory
+
+		else if {_tagSplit::1} is "buy":
+			{_click} in lowercase contains {_tagSplit::2}
+			set {_buy} to shop_getBuyPrice({_category}, {_id})
+			{_buy} is set
+			play sound "ui.button.click" to {_player}
+
+		else if {_tagSplit::1} is "sell":
+			{_click} in lowercase contains {_tagSplit::2}
+			set {_sell} to shop_getSellPrice({_category}, {_id})
+			{_sell} is set
+			play sound "ui.button.click" to {_player}
 
 #
 #	Misc Functions
