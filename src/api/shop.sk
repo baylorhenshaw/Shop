@@ -6,3 +6,64 @@
 #
 #	Written by Baylor Henshaw (https://baezor.com/)
 #
+
+# Important Options
+options:
+	
+	# Variable Storage
+	storage: shop
+
+#
+#	Shop API
+#
+
+# Register Shop Category
+function shop_registerCategory(id: string, icon: item, slot: number):
+	{{@storage}::categories::*} does not contain {_id}
+	add {_id} to {{@storage}::categories::*}
+	set {{@storage}::categories::%{_id}%::icon} to {_icon}
+	set {{@storage}::categories::%{_id}%::slot} to {_slot}
+
+# Register Shop Item
+function shop_registerCategory(category: string, id: string, item: item, buy: number = 0, sell: number = 0):
+	{{@storage}::categories::*} contains {_category}
+	{{@storage}::categories::%{category}%::items::*} does not contain {_id}
+	add {_id} to {{@storage}::categories::%{category}%::items::*}
+	set {{@storage}::categories::%{category}%::items::%{_id}%::buy} to {_buy}
+	set {{@storage}::categories::%{category}%::items::%{_id}%::sell} to {_sell}
+	set {{@storage}::categories::%{category}%::items::%{_id}%::item} to {_item}
+
+# Get Categories
+function shop_getCategories() :: strings:
+	{{@storage}::categories::*} is set
+	return {{@storage}::categories::*}
+
+# Get Items
+function shop_getItems(category: string) :: strings:
+	{{@storage}::categories::%{category}%::items::*} is set
+	return {{@storage}::categories::%{category}%::items::*}
+
+# Get Shop Item
+function shop_getItem(category: string, id: string) :: item:
+	{{@storage}::categories::%{category}%::items::%{_id}%::item} is set
+	return {{@storage}::categories::%{category}%::items::%{_id}%::item}
+
+# Get Sell Price
+function shop_getSellPrice(category: string, id: string) :: item:
+	{{@storage}::categories::%{category}%::items::%{_id}%::sell} > 0
+	return {{@storage}::categories::%{category}%::items::%{_id}%::sell}
+
+# Get Buy Price
+function shop_getBuyPrice(category: string, id: string) :: item:
+	{{@storage}::categories::%{category}%::items::%{_id}%::buy} > 0
+	return {{@storage}::categories::%{category}%::items::%{_id}%::buy}
+
+#
+#	Events
+#
+
+# Loading Event
+on load:
+	
+	# Delete Shop Cache
+	delete {{@storage}::categories::*}
