@@ -27,9 +27,8 @@ options:
 
 	# Style Options - Colors & Lore
 	shop.style.item.format: "&d%{_itemName}%" with lore "&7" and "&aCost: $%{_cost}%"
+	shop.style.category.format: "&d%{_category}%" with lore "&bClick to Open!"
 	shop.style.buttons.page_increase.format: ""
-
-
 
 #
 #	Menu API
@@ -38,18 +37,93 @@ options:
 # Open Main Menu
 function shop_openMainMenu(player: player):
 	
+	play sound "ui.button.click" to {_player}
+	
 	set metadata tag "shop.mainMenu" of {_player} to chest inventory with 5 rows named "Shop"
 
 	loop integers between 0 and 44:
-		set slot loop-integer of metadata tag "shop.mainMenu" of {_player} to black stained glass pane named "&7"
+		set slot loop-integer of metadata tag "shop.mainMenu" of {_player} to {@shop.style.background} named "&7"
+
+	loop shop_getCategories():
+		set {_category} to loop-value
+		set {_icon} to shop_getCategoryIcon(loop-value)
+		{_icon} is set
+		set {_icon} to {_icon} with nbt "{MenuData:""open:%loop-value%^1""}" with all flags hidden
+
+		set {_slot} to shop_getCategorySlot(loop-value)
+
+		set slot {_slot} of metadata tag "shop.mainMenu" of {_player} to {_icon} named {@shop.style.category.format}
+
+		delete {_icon}
+		delete {_slot}
 
 	open (metadata tag "shop.mainMenu" of {_player}) to {_player}
 
+# Open Category
+function shop_openCategory(player: player, category: string, page: number = 1):
+	
+	play sound "ui.button.click" to {_player}
+	
+	set metadata tag "shop.current" of {_player} to chest inventory with 5 rows named "&r%{_category}%"
+
+	loop integers between 0 and 44:
+		set slot loop-integer of metadata tag "shop.current" of {_player} to {@shop.style.background} named "&7"
+
+	loop (integers between 10 and 16, integers between 19 and 25 and integers between 28 and 34):
+		set slot loop-integer of metadata tag "shop.current" of {_player} to {@shop.style.filler} named "&7"
+
+	set {_minLoop} to (21*{_page})-21 
+	set {_loops} to 0
+	set {_slot} to 10
+
+	set {_i::*} to shop_getItems({_category})
+
+	loop {_i::*}:
+		if {_loops} is greater than or equal to {_minLoop}:
+
+			set {_item} to shop_getItem({_category}, loop-value)
+
+			set slot {_slot} of metadata tag "shop.current" of {_player} to {_item}
+
+			add 1 to {_slot}
+			if {_slot} is 17 or 26:
+				add 2 to {_slot}
+			if {_slot} is 35:
+				exit loop
+		add 1 to {_loops}
+
+
+
+	open (metadata tag "shop.current" of {_player}) to {_player}
+
+# Inventory Click Event
 on inventory click:
 	if event-inventory = (metadata tag "shop.mainMenu" of player):
 		cancel event
 		set {_tag} to shop_getCustomItemData(event-item)
 		{_tag} is set
+		shop_executeTag(player, {_tag})
+	else if event-inventory = (metadata tag "shop.current" of player):
+		cancel event
+		set {_tag} to shop_getCustomItemData(event-item)
+		{_tag} is set
+		shop_executeTag(player, {_tag})
+
+# Parse Input Actions from Tag
+function shop_executeTag(player: player, tag: string):
+	if {_tag} contains ",":
+		set {_s::*} to {_tag} split at ","
+		set {_cmds::*} to {_s::*}
+	else:
+		add {_tag} to {_cmds::*}
+
+	loop {_cmds::*}:
+		set {_tagSplit::*} to loop-value split at ":"
+		if {_tagSplit::1} is "open":
+			set {_ns::*} to {_tagSplit::2} split at "^"
+			set {_category} to {_ns::1}
+			set {_page} to {_ns::2} parsed as a number
+			shop_openCategory({_player}, {_category}, {_page})
 
 #
 #	Misc Functions
