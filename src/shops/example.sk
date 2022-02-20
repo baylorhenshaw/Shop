@@ -1,0 +1,6 @@
+# An Example Shop
+on load:
+	
+	shop_registerCategory("Example", diamond, 22)
+
+	shop_registerItem("Example", "stone", stone, 10, 1)
