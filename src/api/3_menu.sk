@@ -229,7 +229,7 @@ function shop_executeTag(player: player, tag: string, click: string):
 			{_click} in lowercase contains {_tagSplit::2}
 			set {_sell} to shop_getSellPrice({_category}, {_id})
 			{_sell} is set
-			play sound "ui.button.click" to {_player}
+			shop_sell({_player}, {_category}, {_id}, {_amount})
 
 #
 #	Misc Functions
