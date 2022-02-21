@@ -137,6 +137,9 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 			set {_sell} to shop_getSellPrice({_category}, loop-value)
 			set {_item} to shop_applyCommand({_item}, "id:%{_id}%,category:%{_category}%,amount:%{_amount}%,buy:left,sell:right")
 
+			set {_sell} to {_sell}*{_amount}
+			set {_buy} to {_buy}*{_amount}
+
 			if {_buy} > 0:
 				if {_sell} > 0:
 					set {_item} to {_item} {@shop.style.item.format.both}
@@ -146,9 +149,6 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 				set {_item} to {_item} {@shop.style.item.format.sell}
 			else:
 				set {_item} to red dye named "&cnull"
-
-			set {_sell} to {_sell}*{_amount}
-			set {_buy} to {_buy}*{_amount}
 
 			set slot {_slot} of metadata tag "shop.current" of {_player} to {_amount} of {_item}
 
