@@ -1,7 +1,0 @@
-# An Example Shop
-on load:
-	
-	shop_registerCategory("Building Blocks", grass block, 22)
-
-	shop_registerItem("Building Blocks", "Grass", grass block, 5, 0)
-
