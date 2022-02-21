@@ -7,21 +7,82 @@
 #	Written by Baylor Henshaw (https://baezor.com/)
 #
 
+# Style Settings
+options:
+	
+	prefix: &6Shop &8»
+	color.1: &7
+	color.2: &e
+	color.3: &6
+
+	version: 1.0.0
+
+#
+#	Commands
+#
+
 # Main Command
-command /shop [<string>]:
+command /shop [<string>] [<string>]:
 	executable by: player
-	permission: shop.use
-	permission message: &cYou do not have permission to use this command!
 	trigger:
 		if arg-1 is not set:
 			shop_openMainMenu(player)
-		else:
-			if shop_getCategories() contains arg-1:
-				shop_openCategory(player, arg-1)
+
+		else if arg-1 is "open":
+			if arg-2 is set:
+				if shop_getCategories() contains arg-2:
+					shop_openCategory(player, arg-2)
+				else:
+					message "&cThat category does not exist!" to player
+					play sound "block.note_block.bass" to player
 			else:
-				message "&cThat category does not exist!" to player
+				shop_openMainMenu(player)
+
+		else if arg-1 is "help":
+
+			message "&7" to sender
+			message "{@color.3}&lShop {@color.1}{@version}" to sender
+			message "&7" to sender
+			message "{@color.3}→ {@color.1}/shop {@color.2}help" to sender
+			message "{@color.3}→ {@color.1}/shop {@color.2}open (shop)" to sender
+			message "{@color.3}→ {@color.1}/shop {@color.2}version" to sender
+			message "{@color.3}→ {@color.1}/shop {@color.2}source" to sender
+			message "{@color.3}→ {@color.1}/shop {@color.2}download" to sender
+			message "{@color.3}→ {@color.1}/shop {@color.2}reload" to sender
+			message "&7" to sender
+			message "{@color.1}Created for {@color.2}PlayInABox{@color.1} with &c❤{@color.1} by <link:https://baezor.com/portfolio/>{@color.2}&nBaezor<reset>{@color.1}!" to sender
+			message "&7" to sender
+			play sound "entity.experience_orb.pickup" to player
+
+		else if arg-1 is "ver", "version", "source", "get" or "download":
+
+			message "&7" to sender
+			message "{@color.3}&lShop {@color.1}{@version}" to sender
+			message "&7" to sender
+			message "{@color.3}→ {@color.1}Shop API is open source!" to sender
+			message "{@color.3}→ {@color.1}You can download it <link:https://github.com/Baezor1/Shop/releases>{@color.2}&nhere&r<reset>{@color.1}!" to sender
+			message "{@color.3}→ {@color.1}Check out the author <link:https://baezor.com/portfolio/>{@color.2}&nhere&r<reset>{@color.1}!" to sender
+			message "{@color.3}→ {@color.1}Check out {@color.2}PlayInABox{@color.1} at {@color.2}playinabox.minehut.gg{@color.1}!" to sender
+			message "&7" to sender
+			play sound "entity.experience_orb.pickup" to player
+
+		else if arg-1 is "reload":
+
+			if player has permission "shop.admin":
+				set {_s::*} to script split at "src/"
+				message "&7"
+				message "{@prefix} {@color.1}Attempting to reload all {@color.2}Shop{@color.1} scripts from the directory {@color.2}%{_s::1}%"
+				message "&7"
+				execute player command "/sk reload %{_s::1}%"
+			else:
+				message "&cYou do not have permission to use this command!"
+
+		else:
+			message "&cInvalid arguments! Try /shop help!"
+			play sound "block.note_block.bass" to player
 
 
 # Tab Completions
 on tab complete of "/shop":
-	set tab completions for position 1 to shop_getCategories()
+	set tab completions for position 1 to "open", "version", "help", "source", "download", and "reload"
+	set tab completions for position 2 to shop_getCategories()
