@@ -1,0 +1,60 @@
+options:
+	price: 20
+
+on load:
+	
+	shop_registerCategory("Decorations", fern, 23)
+
+	shop_registerItem("Decorations", "Oak Sapling", Oak Sapling, {@price}, 0)
+	shop_registerItem("Decorations", "Spruce Sapling", Spruce Sapling, {@price}, 0)
+	shop_registerItem("Decorations", "Birch Sapling", Birch Sapling, {@price}, 0)
+	shop_registerItem("Decorations", "Jungle Sapling", Jungle Sapling, {@price}, 0)
+	shop_registerItem("Decorations", "Acacia Sapling", Acacia Sapling, {@price}, 0)
+	shop_registerItem("Decorations", "Dark Oak Sapling", Dark Oak Sapling, {@price}, 0)
+
+	shop_registerItem("Decorations", "Oak Leaves", Oak Leaves, {@price}, 0)
+	shop_registerItem("Decorations", "Spruce Leaves", Spruce Leaves, {@price}, 0)
+	shop_registerItem("Decorations", "Birch Leaves", Birch Leaves, {@price}, 0)
+	shop_registerItem("Decorations", "Jungle Leaves", Jungle Leaves, {@price}, 0)
+	shop_registerItem("Decorations", "Acacia Leaves", Acacia Leaves, {@price}, 0)
+	shop_registerItem("Decorations", "Dark Oak Leaves", Dark Oak Leaves, {@price}, 0)
+
+	shop_registerItem("Decorations", "Grass", Grass, {@price}, 0)
+	shop_registerItem("Decorations", "Fern", Fern, {@price}, 0)
+	shop_registerItem("Decorations", "Dead Bush", Dead Bush, {@price}, 0)
+	shop_registerItem("Decorations", "Seagrass", Seagrass, {@price}, 0)
+	shop_registerItem("Decorations", "Sea Pickle", Sea Pickle, {@price}, 0)
+
+	shop_registerItem("Decorations", "Dandelion", Dandelion, {@price}, 0)
+	shop_registerItem("Decorations", "Poppy", Poppy, {@price}, 0)
+	shop_registerItem("Decorations", "Blue Orchid", Blue Orchid, {@price}, 0)
+	shop_registerItem("Decorations", "Allium", Allium, {@price}, 0)
+	shop_registerItem("Decorations", "Azure Bluet", Azure Bluet, {@price}, 0)
+	shop_registerItem("Decorations", "Red Tulip", Red Tulip, {@price}, 0)
+	shop_registerItem("Decorations", "Orange Tulip", Orange Tulip, {@price}, 0)
+	shop_registerItem("Decorations", "White Tulip", White Tulip, {@price}, 0)
+	shop_registerItem("Decorations", "Pink Tulip", Pink Tulip, {@price}, 0)
+
+	shop_registerItem("Decorations", "Oxeye Daisy", Oxeye Daisy, {@price}, 0)
+	shop_registerItem("Decorations", "Cornflower", Cornflower, {@price}, 0)
+	shop_registerItem("Decorations", "Lily of the Valley", Lily of the Valley, {@price}, 0)
+
+	shop_registerItem("Decorations", "Brown Mushroom", Brown Mushroom, {@price}, 0)
+	shop_registerItem("Decorations", "Red Mushroom", Red Mushroom, {@price}, 0)
+	shop_registerItem("Decorations", "Lily Pad", Lily Pad, {@price}, 0)
+	shop_registerItem("Decorations", "Vines", Vines, {@price}, 0)
+	shop_registerItem("Decorations", "Lilac", Lilac, {@price}, 0)
+	shop_registerItem("Decorations", "Rose Bush", Rose Bush, {@price}, 0)
+	shop_registerItem("Decorations", "Peony", Peony, {@price}, 0)
+	shop_registerItem("Decorations", "Tall Grass", Tall Grass, {@price}, 0)
+	shop_registerItem("Decorations", "Large Fern", Large Fern, {@price}, 0)
+	shop_registerItem("Decorations", "Sunflower", Sunflower, {@price}, 0)
+
+	shop_registerItem("Decorations", "Flower Pot", Flower Pot, {@price}, 0)
+	shop_registerItem("Decorations", "Lantern", Lantern, {@price}, 0)
+
+
+
+
+
+	#shop_registerItem("Decorations", "placeholder", placeholder, {@price}, 0)
