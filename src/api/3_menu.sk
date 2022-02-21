@@ -19,15 +19,15 @@ options:
 	shop.style.filler: air
 
 	# Back Button
-	shop.style.buttons.back: barrier named "&cGo Back!" with lore "&7Click to go back!"
+	shop.style.buttons.back: minecart with chest named "&cGo Back!" with lore "&7Click to go back!"
 	shop.style.buttons.back.slot: 40
 
 	# Page Increase Button
-	shop.style.buttons.page_increase: lime dye named "&6Next Page" with lore "&7Click to go to the next page!"
+	shop.style.buttons.page_increase: lime stained glass pane named "&6Next Page" with lore "&7Click to go to the next page!"
 	shop.style.buttons.page_increase.slot: 41
 
 	# Page Decrease Button
-	shop.style.buttons.page_decrease: red dye named "&6Previous Page" with lore "&7Click to go to the previous page!"
+	shop.style.buttons.page_decrease: red stained glass pane named "&6Previous Page" with lore "&7Click to go to the previous page!"
 	shop.style.buttons.page_decrease.slot: 39
 
 	# Current Amount Button
