@@ -168,8 +168,6 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 			set {_pageDecrease} to shop_applyCommand({_pageDecrease}, "open:%{_category}%^%{_page}-1%^%{_amount}%")
 			set slot {@shop.style.buttons.page_decrease.slot} of metadata tag "shop.current" of {_player} to {_pageDecrease}
 
-
-
 	open (metadata tag "shop.current" of {_player}) to {_player}
 
 # Inventory Click Event
