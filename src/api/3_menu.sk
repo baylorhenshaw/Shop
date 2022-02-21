@@ -101,7 +101,11 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 
 		play sound "ui.button.click" to {_player}
 	
-	set metadata tag "shop.current" of {_player} to chest inventory with 5 rows named "&r%{_category}% (Page %{_page}%)"
+	if {_ia} > 1:
+		set {_uiname} to "&r%{_category}% (Page %{_page}%)"
+	else:
+		set {_uiname} to "&r%{_category}%"
+	set metadata tag "shop.current" of {_player} to chest inventory with 5 rows named {_uiname}
 
 	loop integers between 0 and 44:
 		set slot loop-integer of metadata tag "shop.current" of {_player} to {@shop.style.background} named "&7"
