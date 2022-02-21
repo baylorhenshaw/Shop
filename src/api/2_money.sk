@@ -12,7 +12,7 @@
 #
 
 # Shop Buy
-function shop_buy(category: string, id: string, amount: number):
+function shop_buy(player: player, category: string, id: string, amount: number):
 	set {_cost} to {_amount}*shop_getBuyPrice({_category}, {_id})
 	{_cost} is set
 
