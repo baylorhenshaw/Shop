@@ -1,0 +1,60 @@
+# An Example Shop
+options:
+	price: 5
+
+on load:
+	
+	shop_registerCategory("Building Blocks", grass block, 22)
+
+	# Dirt/Grass
+	shop_registerItem("Building Blocks", "Grass", grass block, {@price}, 0)
+	shop_registerItem("Building Blocks", "Dirt", Dirt, {@price}, 0)
+	shop_registerItem("Building Blocks", "Coarse Dirt", Coarse Dirt, {@price}, 0)
+	shop_registerItem("Building Blocks", "Podzol", Podzol, {@price}, 0)
+	shop_registerItem("Building Blocks", "Mycelium", Mycelium, {@price}, 0)
+
+	# Stone Bricks
+	shop_registerItem("Building Blocks", "Stone Bricks", Stone Bricks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Mossy Stone Bricks", Mossy Stone Bricks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Cracked Stone Bricks", Cracked Stone Bricks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Chiseled Stone Bricks", Chiseled Stone Bricks, {@price}, 0)
+
+	# Stones
+	shop_registerItem("Building Blocks", "Stone", Stone, {@price}, 0)
+	shop_registerItem("Building Blocks", "Cobblestone", Cobblestone, {@price}, 0)
+	shop_registerItem("Building Blocks", "Granite", Granite, {@price}, 0)
+	shop_registerItem("Building Blocks", "Polished Granite", Polished Granite, {@price}, 0)
+	shop_registerItem("Building Blocks", "Diorite", Diorite, {@price}, 0)
+	shop_registerItem("Building Blocks", "Polished Diorite", Polished Diorite, {@price}, 0)
+	shop_registerItem("Building Blocks", "Andesite", Andesite, {@price}, 0)
+	shop_registerItem("Building Blocks", "Polished Andesite", Polished Andesite, {@price}, 0)
+	shop_registerItem("Building Blocks", "Deepslate", Deepslate, {@price}, 0)
+	shop_registerItem("Building Blocks", "Cobbled Deepslate", Cobbled Deepslate, {@price}, 0)
+	shop_registerItem("Building Blocks", "Polished Deepslate", Polished Deepslate, {@price}, 0)
+	shop_registerItem("Building Blocks", "Calcite", Calcite, {@price}, 0)
+	shop_registerItem("Building Blocks", "Tuff", Tuff, {@price}, 0)
+	shop_registerItem("Building Blocks", "Sandstone", Sandstone, {@price}, 0)
+	shop_registerItem("Building Blocks", "Chiseled Sandstone", Chiseled Sandstone, {@price}, 0)
+	shop_registerItem("Building Blocks", "Cut Sandstone", Cut Sandstone, {@price}, 0)
+	shop_registerItem("Building Blocks", "Sand", Sand, {@price}, 0)
+	shop_registerItem("Building Blocks", "Red Sand", Red Sand, {@price}, 0)
+	shop_registerItem("Building Blocks", "Gravel", Gravel, {@price}, 0)
+
+	# Wood
+	shop_registerItem("Building Blocks", "Oak Log", Oak Log, {@price}, 0)
+	shop_registerItem("Building Blocks", "Spruce Log", Spruce Log, {@price}, 0)
+	shop_registerItem("Building Blocks", "Birch Log", Birch Log, {@price}, 0)
+	shop_registerItem("Building Blocks", "Jungle Log", Jungle Log, {@price}, 0)
+	shop_registerItem("Building Blocks", "Acacia Log", Acacia Log, {@price}, 0)
+	shop_registerItem("Building Blocks", "Dark Oak Log", Dark Oak Log, {@price}, 0)
+	shop_registerItem("Building Blocks", "Oak Planks", Oak Planks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Spruce Planks", Spruce Planks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Birch Planks", Birch Planks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Jungle Planks", Jungle Planks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Acacia Planks", Acacia Planks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Dark Oak Planks", Dark Oak Planks, {@price}, 0)
+
+	# Sand Stone
+
+	#shop_registerItem("Building Blocks", "placeholder", placeholder, {@price}, 0)
+
