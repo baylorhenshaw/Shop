@@ -1,32 +1,7 @@
 # An Example Shop
 on load:
 	
-	shop_registerCategory("Example", diamond, 22)
+	shop_registerCategory("Building Blocks", grass block, 22)
 
-	shop_registerItem("Example", "Stone", stone, 10, 0)
-	shop_registerItem("Example", "Cool Bricks", stone bricks named "cool bricks", 10, 0)
+	shop_registerItem("Building Blocks", "Grass", grass block, 5, 0)
 
-	shop_registerItem("Example", "Both!", redstone, 30, 5)
-	shop_registerItem("Example", "Sell Test", cobblestone, 0, 3)
-
-	shop_registerItem("Example", "item 1", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 2", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 3", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 4", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 5", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 6", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 7", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 8", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 9", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 10", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 11", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 12", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 13", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 14", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 15", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 16", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 17", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 18", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 19", gold ingot, 3, 0)
-	shop_registerItem("Example", "item 20", iron ingot, 3, 0)
-	shop_registerItem("Example", "item 21", gold ingot, 3, 0)
