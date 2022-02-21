@@ -16,7 +16,7 @@ options:
 	
 	# Style Options - Menu Items
 	shop.style.background: black stained glass pane
-	shop.style.filler: stone button
+	shop.style.filler: air
 
 	# Back Button
 	shop.style.buttons.back: barrier named "&cGo Back!" with lore "&7Click to go back!"
@@ -106,7 +106,7 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 	loop integers between 0 and 44:
 		set slot loop-integer of metadata tag "shop.current" of {_player} to {@shop.style.background} named "&7"
 
-	loop (integers between 10 and 16, integers between 19 and 25 and integers between 28 and 34):
+	loop (integers between 9 and 35):
 		set slot loop-integer of metadata tag "shop.current" of {_player} to {@shop.style.filler} named "&7"
 
 	set {_back} to {@shop.style.buttons.back}
@@ -124,9 +124,9 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 	set {_decrease} to shop_applyCommand({_decrease}, "open:%{_category}%^%{_page}%^%{_amount}-4%")
 	set slot {@shop.style.buttons.decrease_count.slot} of metadata tag "shop.current" of {_player} to {_decrease}
 
-	set {_minLoop} to (21*{_page})-21 
+	set {_minLoop} to (27*{_page})-27 
 	set {_loops} to 0
-	set {_slot} to 10
+	set {_slot} to 9
 
 	loop {_i::*}:
 		if {_loops} is greater than or equal to {_minLoop}:
@@ -153,8 +153,8 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 			set slot {_slot} of metadata tag "shop.current" of {_player} to {_amount} of {_item}
 
 			add 1 to {_slot}
-			if {_slot} is 17 or 26:
-				add 2 to {_slot}
+			#if {_slot} is 17 or 26:
+			#	add 2 to {_slot}
 			if {_slot} is 35:
 				exit loop
 		add 1 to {_loops}
@@ -175,12 +175,12 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 
 # Inventory Click Event
 on inventory click:
-	if event-inventory = (metadata tag "shop.mainMenu" of player):
+	if player's current inventory = (metadata tag "shop.mainMenu" of player):
 		cancel event
 		set {_tag} to shop_getCustomItemData(event-item)
 		{_tag} is set
 		shop_executeTag(player, {_tag}, "%click type%")
-	else if event-inventory = (metadata tag "shop.current" of player):
+	else if player's current inventory = (metadata tag "shop.current" of player):
 		cancel event
 		set {_tag} to shop_getCustomItemData(event-item)
 		{_tag} is set
