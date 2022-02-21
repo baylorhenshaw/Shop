@@ -19,15 +19,15 @@ options:
 	shop.style.filler: stone button
 
 	# Back Button
-	shop.style.buttons.back: red stained glass pane named "&cGo Back!" with lore "&7Click to go back!"
+	shop.style.buttons.back: barrier named "&cGo Back!" with lore "&7Click to go back!"
 	shop.style.buttons.back.slot: 40
 
 	# Page Increase Button
-	shop.style.buttons.page_increase: arrow named "&6Next Page" with lore "&7Click to go to the next page!"
+	shop.style.buttons.page_increase: lime dye named "&6Next Page" with lore "&7Click to go to the next page!"
 	shop.style.buttons.page_increase.slot: 41
 
 	# Page Decrease Button
-	shop.style.buttons.page_decrease: arrow named "&6Previous Page" with lore "&7Click to go to the previous page!"
+	shop.style.buttons.page_decrease: red dye named "&6Previous Page" with lore "&7Click to go to the previous page!"
 	shop.style.buttons.page_decrease.slot: 39
 
 	# Current Amount Button
@@ -35,11 +35,11 @@ options:
 	shop.style.buttons.current_amount.slot: 4
 
 	# Increase Count Button
-	shop.style.buttons.increase_count: orange stained glass pane named "&6+4"
+	shop.style.buttons.increase_count: orange dye named "&6+4"
 	shop.style.buttons.increase_count.slot: 5
 
 	# Decrease Count Button
-	shop.style.buttons.decrease_count: yellow stained glass pane named "&6-4"
+	shop.style.buttons.decrease_count: yellow dye named "&6-4"
 	shop.style.buttons.decrease_count.slot: 3
 
 	# Style Options - Colors & Lore
