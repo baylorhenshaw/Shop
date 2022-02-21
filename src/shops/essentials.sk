@@ -1,0 +1,10 @@
+# Essential Category
+options:
+	price: 10
+
+on load:
+	
+	shop_registerCategory("Colored Blocks", lime concrete powder, 21)
+
+	# Concrete
+	shop_registerItem("Colored Blocks", "White Concrete", White Concrete, {@price}, 0)
