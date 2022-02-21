@@ -155,7 +155,7 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 			add 1 to {_slot}
 			#if {_slot} is 17 or 26:
 			#	add 2 to {_slot}
-			if {_slot} is 35:
+			if {_slot} is 36:
 				exit loop
 		add 1 to {_loops}
 
@@ -188,7 +188,7 @@ on inventory click:
 
 # Parse Input Actions from Tag
 function shop_executeTag(player: player, tag: string, click: string):
-	message "&3DEBUG: &7&oExecuting &b%{_tag}%" to {_player}
+	#message "&3DEBUG: &7&oExecuting &b%{_tag}%" to {_player}
 	if {_tag} contains ",":
 		set {_s::*} to {_tag} split at ","
 		set {_cmds::*} to {_s::*}
