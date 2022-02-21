@@ -1,10 +1,15 @@
 # Essential Category
 options:
-	price: 10
+	price: 50
 
 on load:
 	
-	shop_registerCategory("Colored Blocks", lime concrete powder, 21)
+	shop_registerCategory("Essentials", water bucket, 25)
 
 	# Concrete
-	shop_registerItem("Colored Blocks", "White Concrete", White Concrete, {@price}, 0)
+	shop_registerItem("Essentials", "Water Bucket", Water Bucket, {@price}, 0)
+	shop_registerItem("Essentials", "Lava Bucket", Lava Bucket, {@price}, 0)
+	shop_registerItem("Essentials", "Chest", Chest, {@price}, 0)
+	shop_registerItem("Essentials", "Hopper", Hopper, 5000, 0)
+
+	#shop_registerItem("Essentials", "placeholder", placeholder, {@price}, 0)
