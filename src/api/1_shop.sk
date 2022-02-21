@@ -27,11 +27,11 @@ function shop_registerCategory(id: string, icon: item, slot: number):
 # Register Shop Item
 function shop_registerItem(category: string, id: string, item: item, buy: number = 0, sell: number = 0):
 	{{@storage}::categories::*} contains {_category}
-	{{@storage}::categories::%{category}%::items::*} does not contain {_id}
-	add {_id} to {{@storage}::categories::%{category}%::items::*}
-	set {{@storage}::categories::%{category}%::items::%{_id}%::buy} to {_buy}
-	set {{@storage}::categories::%{category}%::items::%{_id}%::sell} to {_sell}
-	set {{@storage}::categories::%{category}%::items::%{_id}%::item} to {_item}
+	{{@storage}::categories::%{_category}%::items::*} does not contain {_id}
+	add {_id} to {{@storage}::categories::%{_category}%::items::*}
+	set {{@storage}::categories::%{_category}%::items::%{_id}%::buy} to {_buy}
+	set {{@storage}::categories::%{_category}%::items::%{_id}%::sell} to {_sell}
+	set {{@storage}::categories::%{_category}%::items::%{_id}%::item} to {_item}
 
 # Get Categories
 function shop_getCategories() :: strings:
@@ -50,23 +50,23 @@ function shop_getCategorySlot(category: string) :: number:
 
 # Get Items
 function shop_getItems(category: string) :: strings:
-	{{@storage}::categories::%{category}%::items::*} is set
-	return {{@storage}::categories::%{category}%::items::*}
+	{{@storage}::categories::%{_category}%::items::*} is set
+	return {{@storage}::categories::%{_category}%::items::*}
 
 # Get Shop Item
 function shop_getItem(category: string, id: string) :: item:
-	{{@storage}::categories::%{category}%::items::%{_id}%::item} is set
-	return {{@storage}::categories::%{category}%::items::%{_id}%::item}
+	{{@storage}::categories::%{_category}%::items::%{_id}%::item} is set
+	return {{@storage}::categories::%{_category}%::items::%{_id}%::item}
 
 # Get Sell Price
 function shop_getSellPrice(category: string, id: string) :: number:
-	{{@storage}::categories::%{category}%::items::%{_id}%::sell} > 0
-	return {{@storage}::categories::%{category}%::items::%{_id}%::sell}
+	{{@storage}::categories::%{_category}%::items::%{_id}%::sell} > 0
+	return {{@storage}::categories::%{_category}%::items::%{_id}%::sell}
 
 # Get Buy Price
 function shop_getBuyPrice(category: string, id: string) :: number:
-	{{@storage}::categories::%{category}%::items::%{_id}%::buy} > 0
-	return {{@storage}::categories::%{category}%::items::%{_id}%::buy}
+	{{@storage}::categories::%{_category}%::items::%{_id}%::buy} > 0
+	return {{@storage}::categories::%{_category}%::items::%{_id}%::buy}
 
 #
 #	Events
