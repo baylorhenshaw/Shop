@@ -8,6 +8,18 @@
 #
 
 #
+#	Options
+#
+
+# Style Settings
+options:
+	
+	prefix: &6Shop &8»
+	color.1: &7
+	color.2: &e
+	color.3: &6
+
+#
 #	Buy & Sell API
 #
 
@@ -20,9 +32,11 @@ function shop_buy(player: player, category: string, id: string, amount: number):
 		remove {_cost} from {_player}'s balance
 		play sound "entity.experience_orb.pickup" to {_player}
 		give {_player} {_amount} of shop_getItem({_category}, {_id})
+		message "{@prefix} {@color.1}You have just purchased {@color.2}%{_amount}%{@color.1} of {@color.2}%{_id}%{@color.1}!" to {_player}
 	else:
 		play sound "block.note_block.bass" to {_player}
 		send action bar "&cYou cannot afford this!" to {_player}
+		message "{@prefix} &cYou cannot afford this!" to {_player}
 
 # Shop Sell
 function shop_sell(player: player, category: string, id: string, amount: number):
@@ -33,7 +47,9 @@ function shop_sell(player: player, category: string, id: string, amount: number)
 		add {_cost} to {_player}'s balance
 		play sound "entity.experience_orb.pickup" to {_player}
 		remove {_amount} of shop_getItem({_category}, {_id}) from {_player}'s inventory
+		message "{@prefix} {@color.1}You have just sold {@color.2}%{_amount}%{@color.1} of {@color.2}%{_id}%{@color.1} for &a$%{_cost}%{@color.1}!" to {_player}
 
 	else:
 		play sound "block.note_block.bass" to {_player}
 		send action bar "&cYou don't have enough items!" to {_player}
+		message "{@prefix} &cYou don't have enough items!" to {_player}
