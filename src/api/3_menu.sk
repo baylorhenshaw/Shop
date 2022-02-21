@@ -220,7 +220,7 @@ function shop_executeTag(player: player, tag: string, click: string):
 			{_click} in lowercase contains {_tagSplit::2}
 			set {_buy} to shop_getBuyPrice({_category}, {_id})
 			{_buy} is set
-			play sound "ui.button.click" to {_player}
+			shop_buy({_player}, {_category}, {_id}, {_amount})
 
 		else if {_tagSplit::1} is "sell":
 			{_click} in lowercase contains {_tagSplit::2}
