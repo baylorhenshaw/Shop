@@ -1,0 +1,27 @@
+#
+#	Shop Commands 1.0.0
+#	
+#	Created for as a commission for PlayInABox.
+#	Copyright © 2021 Baylor Henshaw <baylor@henshaw.me>
+#
+#	Written by Baylor Henshaw (https://baezor.com/)
+#
+
+# Main Command
+command /shop [<string>]:
+	executable by: player
+	permission: shop.use
+	permission message: &cYou do not have permission to use this command!
+	trigger:
+		if arg-1 is not set:
+			shop_openMainMenu(player)
+		else:
+			if shop_getCategories() contains arg-1:
+				shop_openCategory(player, arg-1)
+			else:
+				message "&cThat category does not exist!" to player
+
+
+# Tab Completions
+on tab complete of "/shop":
+	set tab completions for position 1 to shop_getCategories()
