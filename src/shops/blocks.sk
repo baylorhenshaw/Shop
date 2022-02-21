@@ -4,7 +4,7 @@ options:
 
 on load:
 	
-	shop_registerCategory("Building Blocks", grass block, 22)
+	shop_registerCategory("Building Blocks", grass block, 19)
 
 	# Dirt/Grass
 	shop_registerItem("Building Blocks", "Grass", grass block, {@price}, 0)
