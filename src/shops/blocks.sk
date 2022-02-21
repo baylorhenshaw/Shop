@@ -54,7 +54,11 @@ on load:
 	shop_registerItem("Building Blocks", "Acacia Planks", Acacia Planks, {@price}, 0)
 	shop_registerItem("Building Blocks", "Dark Oak Planks", Dark Oak Planks, {@price}, 0)
 
-	# Sand Stone
+	# Quartz
+	shop_registerItem("Building Blocks", "Quartz Block", Quartz Block, {@price}, 0)
+	shop_registerItem("Building Blocks", "Chiseled Quartz Block", Chiseled Quartz Block, {@price}, 0)
+	shop_registerItem("Building Blocks", "Quartz Bricks", Quartz Bricks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Quartz Pillar", Quartz Pillar, {@price}, 0)
 
 	#shop_registerItem("Building Blocks", "placeholder", placeholder, {@price}, 0)
 
