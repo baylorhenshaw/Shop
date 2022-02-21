@@ -85,7 +85,7 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 	set {_ia} to 1
 	loop {_i::*}:
 		add 1 to {_ia}
-	set {_ia} to {_ia}/21
+	set {_ia} to {_ia}/27
 	set {_ia} to ceil({_ia})
 
 	if {_page} < 1:
