@@ -158,13 +158,15 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 
 	if {_ia} > 1:
 
-		set {_pageIncrease} to {@shop.style.buttons.page_increase}
-		set {_pageIncrease} to shop_applyCommand({_pageIncrease}, "open:%{_category}%^%{_page}+1%^%{_amount}%")
-		set slot {@shop.style.buttons.page_increase.slot} of metadata tag "shop.current" of {_player} to {_pageIncrease}
+		if {_page} < {_ia}:
+			set {_pageIncrease} to {@shop.style.buttons.page_increase}
+			set {_pageIncrease} to shop_applyCommand({_pageIncrease}, "open:%{_category}%^%{_page}+1%^%{_amount}%")
+			set slot {@shop.style.buttons.page_increase.slot} of metadata tag "shop.current" of {_player} to {_pageIncrease}
 
-		set {_pageDecrease} to {@shop.style.buttons.page_decrease}
-		set {_pageDecrease} to shop_applyCommand({_pageDecrease}, "open:%{_category}%^%{_page}-1%^%{_amount}%")
-		set slot {@shop.style.buttons.page_decrease.slot} of metadata tag "shop.current" of {_player} to {_pageDecrease}
+		if {_page} > 1:
+			set {_pageDecrease} to {@shop.style.buttons.page_decrease}
+			set {_pageDecrease} to shop_applyCommand({_pageDecrease}, "open:%{_category}%^%{_page}-1%^%{_amount}%")
+			set slot {@shop.style.buttons.page_decrease.slot} of metadata tag "shop.current" of {_player} to {_pageDecrease}
 
 
 
