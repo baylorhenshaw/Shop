@@ -29,10 +29,15 @@ function shop_buy(player: player, category: string, id: string, amount: number):
 	{_cost} is set
 
 	if {_player}'s balance >= {_cost}:
-		remove {_cost} from {_player}'s balance
-		play sound "entity.experience_orb.pickup" to {_player}
-		give {_player} {_amount} of shop_getItem({_category}, {_id})
-		message "{@prefix} {@color.1}You have just purchased {@color.2}%{_amount}%{@color.1} of {@color.2}%{_id}%{@color.1}!" to {_player}
+		if {_player}'s inventory can hold {_amount} of shop_getItem({_category}, {_id}):
+			remove {_cost} from {_player}'s balance
+			play sound "entity.experience_orb.pickup" to {_player}
+			give {_player} {_amount} of shop_getItem({_category}, {_id})
+			message "{@prefix} {@color.1}You have just purchased {@color.2}%{_amount}%{@color.1} of {@color.2}%{_id}%{@color.1}!" to {_player}
+		else:
+			play sound "block.note_block.bass" to {_player}
+			send action bar "&cYou cannot hold this many items!" to {_player}
+			message "{@prefix} &cYou cannot hold this many items!" to {_player}
 	else:
 		play sound "block.note_block.bass" to {_player}
 		send action bar "&cYou cannot afford this!" to {_player}
