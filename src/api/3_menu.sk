@@ -47,7 +47,7 @@ options:
 	shop.style.item.format.buy: named "&d%{_id}%" with lore "&7" and "&aCost: $%{_buy}%"
 	shop.style.item.format.sell: named "&d%{_id}%" with lore "&7" and "&cSell: $%{_sell}%"
 
-	shop.style.category.format: named "&d%{_category}%" with lore "&bClick to Open!"
+	shop.style.category.format: named "&6%{_category}%" with lore "&f%amount of shop_getItems({_category})%&7 Item(s)"
 
 #
 #	Menu API
