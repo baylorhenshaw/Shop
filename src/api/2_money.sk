@@ -1,0 +1,25 @@
+#
+#	Buy & Sell API 1.0.0
+#	
+#	Created for as a commission for PlayInABox.
+#	Copyright © 2021 Baylor Henshaw <baylor@henshaw.me>
+#
+#	Written by Baylor Henshaw (https://baezor.com/)
+#
+
+#
+#	Buy & Sell API
+#
+
+# Shop Buy
+function shop_buy(category: string, id: string, amount: number):
+	set {_cost} to {_amount}*shop_getBuyPrice({_category}, {_id})
+	{_cost} is set
+
+	if {_player}'s balance >= {_cost}:
+		remove {_cost} from {_player}'s balance
+		play sound "entity.experience_orb.pickup" to {_player}
+		give {_player} {_amount} of shop_getItem({_category}, {_id})
+	else:
+		play sound "block.note_block.bass" to {_player}
+		send action bar "&cYou cannot afford this!" to {_player}
