@@ -147,6 +147,9 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 			else:
 				set {_item} to red dye named "&cnull"
 
+			set {_sell} to {_sell}*{_amount}
+			set {_buy} to {_buy}*{_amount}
+
 			set slot {_slot} of metadata tag "shop.current" of {_player} to {_amount} of {_item}
 
 			add 1 to {_slot}
