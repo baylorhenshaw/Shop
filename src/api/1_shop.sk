@@ -18,11 +18,12 @@ options:
 #
 
 # Register Shop Category
-function shop_registerCategory(id: string, icon: item, slot: number):
+function shop_registerCategory(id: string, icon: item, slot: number, ainc: number = 4):
 	{{@storage}::categories::*} does not contain {_id}
 	add {_id} to {{@storage}::categories::*}
 	set {{@storage}::categories::%{_id}%::icon} to {_icon}
 	set {{@storage}::categories::%{_id}%::slot} to {_slot}
+	set {{@storage}::categories::%{_id}%::ainc} to {_ainc}
 
 # Register Shop Item
 function shop_registerItem(category: string, id: string, item: item, buy: number = 0, sell: number = 0):
@@ -42,6 +43,11 @@ function shop_getCategories() :: strings:
 function shop_getCategoryIcon(category: string) :: item:
 	{{@storage}::categories::%{_category}%::icon} is set
 	return {{@storage}::categories::%{_category}%::icon}
+
+# Get Increment
+function shop_getInc(category: string) :: number:
+	{{@storage}::categories::%{_category}%::ainc} is set
+	return {{@storage}::categories::%{_category}%::ainc}
 
 # Get Slot
 function shop_getCategorySlot(category: string) :: number:
