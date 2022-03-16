@@ -58,7 +58,7 @@ function shop_openMainMenu(player: player):
 	
 	play sound "ui.button.click" to {_player}
 	
-	set metadata tag "shop.mainMenu" of {_player} to chest inventory with 5 rows named "Shop"
+	set metadata tag "shop.mainMenu" of {_player} to chest inventory with 4 rows named "Shop"
 
 	loop integers between 0 and 44:
 		set slot loop-integer of metadata tag "shop.mainMenu" of {_player} to {@shop.style.background} named "&7"
