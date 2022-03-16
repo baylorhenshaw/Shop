@@ -15,6 +15,7 @@ on load:
 	shop_registerItem("Essentials & Misc.", "Bookshelf", Bookshelf, {@price}, 0)
 	shop_registerItem("Essentials & Misc.", "Book", Book, {@price}, 0)
 	shop_registerItem("Essentials & Misc.", "Anvil", Anvil, 1000, 0)
+	shop_registerItem("Essentials & Misc.", "Arrow", Arrow, 50, 0)
 
 
 	#shop_registerItem("Essentials & Misc.", "placeholder", placeholder, {@price}, 0)
