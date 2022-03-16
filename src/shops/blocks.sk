@@ -47,7 +47,7 @@ on load:
 	shop_registerItem("Building Blocks", "Jungle Log", Jungle Log, {@price}, 0)
 	shop_registerItem("Building Blocks", "Acacia Log", Acacia Log, {@price}, 0)
 	shop_registerItem("Building Blocks", "Dark Oak Log", Dark Oak Log, {@price}, 0)
-	shop_registerItem("Building Blocks", "Oak Planks", Oak Planks, {@price}, 0)
+	shop_registerItema("Building Blocks", "Oak Planks", Oak Planks, {@price}, 0)
 	shop_registerItem("Building Blocks", "Spruce Planks", Spruce Planks, {@price}, 0)
 	shop_registerItem("Building Blocks", "Birch Planks", Birch Planks, {@price}, 0)
 	shop_registerItem("Building Blocks", "Jungle Planks", Jungle Planks, {@price}, 0)
@@ -59,6 +59,32 @@ on load:
 	shop_registerItem("Building Blocks", "Chiseled Quartz Block", Chiseled Quartz Block, {@price}, 0)
 	shop_registerItem("Building Blocks", "Quartz Bricks", Quartz Bricks, {@price}, 0)
 	shop_registerItem("Building Blocks", "Quartz Pillar", Quartz Pillar, {@price}, 0)
+
+	# Nether Blocks
+	shop_registerItem("Building Blocks", "Netherrack", Netherrack, {@price}, 0)
+	shop_registerItem("Building Blocks", "Nether Bricks", Nether Bricks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Cracked Nether Bricks", Cracked Nether Bricks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Chiseled Nether Bricks", Chiseled Nether Bricks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Red Nether Bricks", Red Nether Bricks, {@price}, 0)
+
+	# Prismarine
+	shop_registerItem("Building Blocks", "Prismarine", Prismarine, {@price}, 0)
+	shop_registerItem("Building Blocks", "Prismarine Bricks", Prismarine Bricks, {@price}, 0)
+	shop_registerItem("Building Blocks", "Dark Prismarine", Dark Prismarine, {@price}, 0)
+
+	# Purpur
+	shop_registerItem("Building Blocks", "Purpur Block", Purpur Block, {@price}, 0)
+	shop_registerItem("Building Blocks", "Purpur Pillar", Purpur Pillar, {@price}, 0)
+
+	# Ice
+	shop_registerItem("Building Blocks", "Ice", Ice, {@price}, 0)
+	shop_registerItem("Building Blocks", "Packed Ice", Packed Ice, {@price}, 0)
+	shop_registerItem("Building Blocks", "Blue Ice", Blue Ice, {@price}, 0)
+
+	# Lights
+	shop_registerItem("Building Blocks", "Glowstone", Glowstone, {@price}, 0)
+	shop_registerItem("Building Blocks", "Shroomlight", Shroomlight, {@price}, 0)
+	shop_registerItem("Building Blocks", "Sea Lantern", Sea Lantern, {@price}, 0)
 
 	#shop_registerItem("Building Blocks", "placeholder", placeholder, {@price}, 0)
 
