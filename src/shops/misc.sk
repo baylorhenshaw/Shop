@@ -1,0 +1,15 @@
+# Misc Category
+options:
+	price: 50
+
+on load:
+	
+	shop_registerCategory("Misc", water bucket, 16)
+
+	# Concrete
+	shop_registerItem("Misc", "Water Bucket", Water Bucket, {@price}, 0)
+	shop_registerItem("Misc", "Lava Bucket", Lava Bucket, {@price}, 0)
+	shop_registerItem("Misc", "Chest", Chest, {@price}, 0)
+	shop_registerItem("Misc", "Hopper", Hopper, 5000, 0)
+
+	#shop_registerItem("Misc", "placeholder", placeholder, {@price}, 0)
