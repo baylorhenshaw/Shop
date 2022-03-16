@@ -1,0 +1,10 @@
+# Template Category
+options:
+	price: 50
+
+on load:
+	
+	shop_registerCategory("Template", stone, 0)
+
+	# Items
+	shop_registerItem("Template", "placeholder", placeholder, {@price}, 0)
