@@ -1,0 +1,39 @@
+# Armor Category
+options:
+	leather-price: 1000
+	iron-price: 2550
+	gold-price: 5000
+	diamond-price: 10000
+	netherite-price: 20000
+
+on load:
+	
+	shop_registerCategory("Armor", diamond chestplate, 22, 1)
+
+	# Items
+	shop_registerItem("Armor", "Leather Cap", Leather Helmet, {@leather-price}, 0)
+	shop_registerItem("Armor", "Leather Tunic", Leather Chestplate, {@leather-price}, 0)
+	shop_registerItem("Armor", "Leather Pants", Leather Leggings, {@leather-price}, 0)
+	shop_registerItem("Armor", "Leather Boots", Leather Boots, {@leather-price}, 0)
+
+	shop_registerItem("Armor", "Iron Helmet", Iron Helmet, {@iron-price}, 0)
+	shop_registerItem("Armor", "Iron Chestplate", Iron Chestplate, {@iron-price}, 0)
+	shop_registerItem("Armor", "Iron Leggings", Iron Leggings, {@iron-price}, 0)
+	shop_registerItem("Armor", "Iron Boots", Iron Boots, {@iron-price}, 0)
+
+	shop_registerItem("Armor", "Golden Helmet", Golden Helmet, {@gold-price}, 0)
+	shop_registerItem("Armor", "Golden Chestplate", Golden Chestplate, {@gold-price}, 0)
+	shop_registerItem("Armor", "Golden Leggings", Golden Leggings, {@gold-price}, 0)
+	shop_registerItem("Armor", "Golden Boots", Golden Boots, {@gold-price}, 0)
+
+	shop_registerItem("Armor", "Diamond Helmet", Diamond Helmet, {@diamond-price}, 0)
+	shop_registerItem("Armor", "Diamond Chestplate", Diamond Chestplate, {@diamond-price}, 0)
+	shop_registerItem("Armor", "Diamond Leggings", Diamond Leggings, {@diamond-price}, 0)
+	shop_registerItem("Armor", "Diamond Boots", Diamond Boots, {@diamond-price}, 0)
+
+	shop_registerItem("Armor", "Netherite Helmet", Netherite Helmet, {@netherite-price}, 0)
+	shop_registerItem("Armor", "Netherite Chestplate", Netherite Chestplate, {@netherite-price}, 0)
+	shop_registerItem("Armor", "Netherite Leggings", Netherite Leggings, {@netherite-price}, 0)
+	shop_registerItem("Armor", "Netherite Boots", Netherite Boots, {@netherite-price}, 0)
+
+	#shop_registerItem("Armor", "stone", stone, {@price}, 0)
