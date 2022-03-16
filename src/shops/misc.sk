@@ -1,15 +1,20 @@
-# Misc Category
+# Essentials & Misc. Category
 options:
 	price: 50
 
 on load:
 	
-	shop_registerCategory("Misc", water bucket, 16)
+	shop_registerCategory("Essentials & Misc.", water bucket, 16)
 
 	# Concrete
-	shop_registerItem("Misc", "Water Bucket", Water Bucket, {@price}, 0)
-	shop_registerItem("Misc", "Lava Bucket", Lava Bucket, {@price}, 0)
-	shop_registerItem("Misc", "Chest", Chest, {@price}, 0)
-	shop_registerItem("Misc", "Hopper", Hopper, 5000, 0)
+	shop_registerItem("Essentials & Misc.", "Water Bucket", Water Bucket, {@price}, 0)
+	shop_registerItem("Essentials & Misc.", "Lava Bucket", Lava Bucket, {@price}, 0)
+	shop_registerItem("Essentials & Misc.", "Chest", Chest, {@price}, 0)
+	shop_registerItem("Essentials & Misc.", "Hopper", Hopper, 5000, 0)
+	shop_registerItem("Essentials & Misc.", "Enchanting Table", Enchanting Table, 1000, 0)
+	shop_registerItem("Essentials & Misc.", "Bookshelf", Bookshelf, {@price}, 0)
+	shop_registerItem("Essentials & Misc.", "Book", Book, {@price}, 0)
+	shop_registerItem("Essentials & Misc.", "Anvil", Anvil, 1000, 0)
 
-	#shop_registerItem("Misc", "placeholder", placeholder, {@price}, 0)
+
+	#shop_registerItem("Essentials & Misc.", "placeholder", placeholder, {@price}, 0)
