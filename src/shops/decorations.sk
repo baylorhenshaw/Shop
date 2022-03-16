@@ -4,7 +4,7 @@ options:
 
 on load:
 	
-	shop_registerCategory("Decorations", fern, 23)
+	shop_registerCategory("Decorations", fern, 14)
 
 	shop_registerItem("Decorations", "Oak Sapling", Oak Sapling, {@price}, 0)
 	shop_registerItem("Decorations", "Spruce Sapling", Spruce Sapling, {@price}, 0)
