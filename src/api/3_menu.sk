@@ -35,11 +35,11 @@ options:
 	shop.style.buttons.current_amount.slot: 4
 
 	# Increase Count Button
-	shop.style.buttons.increase_count: orange dye named "&6+4"
+	shop.style.buttons.increase_count: lime dye named "&6+%{_ainc}%"
 	shop.style.buttons.increase_count.slot: 5
 
 	# Decrease Count Button
-	shop.style.buttons.decrease_count: yellow dye named "&6-4"
+	shop.style.buttons.decrease_count: red dye named "&6-%{_ainc}%"
 	shop.style.buttons.decrease_count.slot: 3
 
 	# Style Options - Colors & Lore
@@ -67,7 +67,10 @@ function shop_openMainMenu(player: player):
 		set {_category} to loop-value
 		set {_icon} to shop_getCategoryIcon(loop-value)
 		{_icon} is set
-		set {_icon} to shop_applyCommand({_icon}, "open:%loop-value%^1^4")
+		set {_ainc} to shop_getInc(loop-value)
+		if {_ainc} is not set:
+			set {_ainc} to 4
+		set {_icon} to shop_applyCommand({_icon}, "open:%loop-value%^1^%{_ainc}%^%{_ainc}%")
 
 		set {_slot} to shop_getCategorySlot(loop-value)
 
@@ -79,7 +82,7 @@ function shop_openMainMenu(player: player):
 	open (metadata tag "shop.mainMenu" of {_player}) to {_player}
 
 # Open Category
-function shop_openCategory(player: player, category: string, page: number = 1, amount: number = 4):
+function shop_openCategory(player: player, category: string, page: number = 1, amount: number = 4, ainc: number = 4):
 
 	set {_i::*} to shop_getItems({_category})
 	set {_ia} to 0
@@ -93,8 +96,8 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 	else if {_page} > {_ia}:
 		set {_page} to {_ia}
 
-	if {_amount} < 4:
-		set {_amount} to 4
+	if {_amount} < {_ainc}:
+		set {_amount} to {_ainc}
 	else if {_amount} > 64:
 		set {_amount} to 64
 	else:
@@ -117,16 +120,18 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 	set {_back} to shop_applyCommand({_back}, "open:main")
 	set slot {@shop.style.buttons.back.slot} of metadata tag "shop.current" of {_player} to {_back}
 
-	set {_current} to {@shop.style.buttons.current_amount}
-	set slot {@shop.style.buttons.current_amount.slot} of metadata tag "shop.current" of {_player} to {_current} with all flags hidden
+	if {_ainc} > 1:
 
-	set {_increase} to {@shop.style.buttons.increase_count}
-	set {_increase} to shop_applyCommand({_increase}, "open:%{_category}%^%{_page}%^%{_amount}+4%")
-	set slot {@shop.style.buttons.increase_count.slot} of metadata tag "shop.current" of {_player} to {_increase}
+		set {_current} to {@shop.style.buttons.current_amount}
+		set slot {@shop.style.buttons.current_amount.slot} of metadata tag "shop.current" of {_player} to {_current} with all flags hidden
 
-	set {_decrease} to {@shop.style.buttons.decrease_count}
-	set {_decrease} to shop_applyCommand({_decrease}, "open:%{_category}%^%{_page}%^%{_amount}-4%")
-	set slot {@shop.style.buttons.decrease_count.slot} of metadata tag "shop.current" of {_player} to {_decrease}
+		set {_increase} to {@shop.style.buttons.increase_count}
+		set {_increase} to shop_applyCommand({_increase}, "open:%{_category}%^%{_page}%^%{_amount}+{_ainc}%^%{_ainc}%")
+		set slot {@shop.style.buttons.increase_count.slot} of metadata tag "shop.current" of {_player} to {_increase}
+
+		set {_decrease} to {@shop.style.buttons.decrease_count}
+		set {_decrease} to shop_applyCommand({_decrease}, "open:%{_category}%^%{_page}%^%{_amount}-{_ainc}%^%{_ainc}%")
+		set slot {@shop.style.buttons.decrease_count.slot} of metadata tag "shop.current" of {_player} to {_decrease}
 
 	set {_minLoop} to (27*{_page})-27 
 	set {_loops} to 0
@@ -167,12 +172,12 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 
 		if {_page} < {_ia}:
 			set {_pageIncrease} to {@shop.style.buttons.page_increase}
-			set {_pageIncrease} to shop_applyCommand({_pageIncrease}, "open:%{_category}%^%{_page}+1%^%{_amount}%")
+			set {_pageIncrease} to shop_applyCommand({_pageIncrease}, "open:%{_category}%^%{_page}+1%^%{_amount}%^%{_ainc}%")
 			set slot {@shop.style.buttons.page_increase.slot} of metadata tag "shop.current" of {_player} to {_pageIncrease}
 
 		if {_page} > 1:
 			set {_pageDecrease} to {@shop.style.buttons.page_decrease}
-			set {_pageDecrease} to shop_applyCommand({_pageDecrease}, "open:%{_category}%^%{_page}-1%^%{_amount}%")
+			set {_pageDecrease} to shop_applyCommand({_pageDecrease}, "open:%{_category}%^%{_page}-1%^%{_amount}%^%{_ainc}%")
 			set slot {@shop.style.buttons.page_decrease.slot} of metadata tag "shop.current" of {_player} to {_pageDecrease}
 
 	open (metadata tag "shop.current" of {_player}) to {_player}
@@ -207,7 +212,11 @@ function shop_executeTag(player: player, tag: string, click: string):
 				set {_category} to {_ns::1}
 				set {_page} to {_ns::2} parsed as a number
 				set {_amount} to {_ns::3} parsed as a number
-				shop_openCategory({_player}, {_category}, {_page}, {_amount})
+				if {_ns::4} is set:
+					set {_ainc} to {_ns::4} parsed as a number
+				else:
+					set {_ainc} to 4
+				shop_openCategory({_player}, {_category}, {_page}, {_amount}, {_ainc})
 			else if {_tagSplit::2} is "main":
 				shop_openMainMenu({_player})
 
