@@ -1,0 +1,45 @@
+# Tools Category
+options:
+	wood-price: 500
+	stone-price: 1000
+	iron-price: 1250
+	gold-price: 2500
+	diamond-price: 5000
+	netherite-price: 15000
+
+on load:
+	
+	shop_registerCategory("Tools", iron pickaxe, 20, 1)
+
+	# Items
+	#shop_registerItem("Tools", "stone", stone, {@price}, 0)
+
+	shop_registerItem("Tools", "Wooden Pickaxe", Wooden Pickaxe, {@wood-price}, 0)
+	shop_registerItem("Tools", "Wooden Axe", Wooden Axe, {@wood-price}, 0)
+	shop_registerItem("Tools", "Wooden Shovel", Wooden Shovel, {@wood-price}, 0)
+	shop_registerItem("Tools", "Wooden Hoe", Wooden Hoe, {@wood-price}, 0)
+
+	shop_registerItem("Tools", "Stone Pickaxe", Stone Pickaxe, {@stone-price}, 0)
+	shop_registerItem("Tools", "Stone Axe", Stone Axe, {@stone-price}, 0)
+	shop_registerItem("Tools", "Stone Shovel", Stone Shovel, {@stone-price}, 0)
+	shop_registerItem("Tools", "Stone Hoe", Stone Hoe, {@stone-price}, 0)
+
+	shop_registerItem("Tools", "Iron Pickaxe", Iron Pickaxe, {@iron-price}, 0)
+	shop_registerItem("Tools", "Iron Axe", Iron Axe, {@iron-price}, 0)
+	shop_registerItem("Tools", "Iron Shovel", Iron Shovel, {@iron-price}, 0)
+	shop_registerItem("Tools", "Iron Hoe", Iron Hoe, {@iron-price}, 0)
+
+	shop_registerItem("Tools", "Golden Pickaxe", Golden Pickaxe, {@gold-price}, 0)
+	shop_registerItem("Tools", "Golden Axe", Golden Axe, {@gold-price}, 0)
+	shop_registerItem("Tools", "Golden Shovel", Golden Shovel, {@gold-price}, 0)
+	shop_registerItem("Tools", "Golden Hoe", Golden Hoe, {@gold-price}, 0)
+
+	shop_registerItem("Tools", "Diamond Pickaxe", Diamond Pickaxe, {@diamond-price}, 0)
+	shop_registerItem("Tools", "Diamond Axe", Diamond Axe, {@diamond-price}, 0)
+	shop_registerItem("Tools", "Diamond Shovel", Diamond Shovel, {@diamond-price}, 0)
+	shop_registerItem("Tools", "Diamond Hoe", Diamond Hoe, {@diamond-price}, 0)
+
+	shop_registerItem("Tools", "Netherite Pickaxe", Netherite Pickaxe, {@netherite-price}, 0)
+	shop_registerItem("Tools", "Netherite Axe", Netherite Axe, {@netherite-price}, 0)
+	shop_registerItem("Tools", "Netherite Shovel", Netherite Shovel, {@netherite-price}, 0)
+	shop_registerItem("Tools", "Netherite Hoe", Netherite Hoe, {@netherite-price}, 0)

@@ -1,0 +1,34 @@
+# Weapons Category
+options:
+	wood-price: 500
+	stone-price: 1000
+	iron-price: 1250
+	gold-price: 2500
+	diamond-price: 5000
+	netherite-price: 15000
+
+on load:
+	
+	shop_registerCategory("Weapons", gold sword, 24, 1)
+
+	# Items
+
+	shop_registerItem("Weapons", "Wooden Sword", Wooden Sword, {@wood-price}, 0)
+
+	shop_registerItem("Weapons", "Stone Sword", Stone Sword, {@stone-price}, 0)
+
+	shop_registerItem("Weapons", "Iron Sword", Iron Sword, {@iron-price}, 0)
+
+	shop_registerItem("Weapons", "Golden Sword", Golden Sword, {@gold-price}, 0)
+
+	shop_registerItem("Weapons", "Diamond Sword", Diamond Sword, {@diamond-price}, 0)
+
+	shop_registerItem("Weapons", "Netherite Sword", Netherite Sword, {@netherite-price}, 0)
+
+	shop_registerItem("Weapons", "Shield", Shield, 500, 0)
+
+	shop_registerItem("Weapons", "Bow", Bow, 500, 0)
+
+	shop_registerItem("Weapons", "Crossbow", Crossbow, 1000, 0)
+
+	shop_registerItem("Weapons", "Trident", Trident, 20000, 0)
