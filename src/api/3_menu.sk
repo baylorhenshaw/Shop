@@ -31,7 +31,7 @@ options:
 	shop.style.buttons.page_decrease.slot: 39
 
 	# Current Amount Button
-	shop.style.buttons.current_amount: minecart with furnace named "&6Current Quantity: %{_amount}%"
+	shop.style.buttons.current_amount: minecart with furnace named "&6Current Quantity: %{_currentAmount}%"
 	shop.style.buttons.current_amount.slot: 4
 
 	# Increase Count Button
@@ -43,9 +43,9 @@ options:
 	shop.style.buttons.decrease_count.slot: 3
 
 	# Style Options - Colors & Lore
-	shop.style.item.format.both: named "&d%{_id}%" with lore "&7", "&aCost: $%{_buy}%" and "&cSell: $%{_sell}%"
-	shop.style.item.format.buy: named "&d%{_id}%" with lore "&7" and "&aCost: $%{_buy}%"
-	shop.style.item.format.sell: named "&d%{_id}%" with lore "&7" and "&cSell: $%{_sell}%"
+	shop.style.item.format.both: named "&d%{_currentAmount}%&dx %{_id}%" with lore "&7", "&aCost: $%money_format({_buy})%" and "&cSell: $%money_format({_sell})%"
+	shop.style.item.format.buy: named "&d%{_currentAmount}%&dx %{_id}%" with lore "&7" and "&aCost: $%money_format({_buy})%"
+	shop.style.item.format.sell: named "&d%{_currentAmount}%&dx %{_id}%" with lore "&7" and "&cSell: $%money_format({_sell})%"
 
 	shop.style.category.format: named "&6%{_category}%" with lore "&f%amount of shop_getItems({_category})%&7 Item(s)"
 
@@ -140,14 +140,19 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 	loop {_i::*}:
 		if {_loops} is greater than or equal to {_minLoop}:
 
+			if shop_getStackable({_category}, loop-value) is true:
+				set {_currentAmount} to {_amount}
+			else:
+				set {_currentAmount} to 1
+
 			set {_id} to loop-value
 			set {_item} to shop_getItem({_category}, loop-value)
 			set {_buy} to shop_getBuyPrice({_category}, loop-value)
 			set {_sell} to shop_getSellPrice({_category}, loop-value)
-			set {_item} to shop_applyCommand({_item}, "id:%{_id}%,category:%{_category}%,amount:%{_amount}%,buy:left,sell:right")
+			set {_item} to shop_applyCommand({_item}, "id:%{_id}%,category:%{_category}%,amount:%{_currentAmount}%,buy:left,sell:right")
 
-			set {_sell} to {_sell}*{_amount}
-			set {_buy} to {_buy}*{_amount}
+			set {_sell} to {_sell}*{_currentAmount}
+			set {_buy} to {_buy}*{_currentAmount}
 
 			if {_buy} > 0:
 				if {_sell} > 0:
@@ -159,7 +164,7 @@ function shop_openCategory(player: player, category: string, page: number = 1, a
 			else:
 				set {_item} to red dye named "&cnull"
 
-			set slot {_slot} of metadata tag "shop.current" of {_player} to {_amount} of {_item}
+			set slot {_slot} of metadata tag "shop.current" of {_player} to {_currentAmount} of {_item}
 
 			add 1 to {_slot}
 			#if {_slot} is 17 or 26:
