@@ -31,7 +31,7 @@ options:
 	shop.style.buttons.page_decrease.slot: 39
 
 	# Current Amount Button
-	shop.style.buttons.current_amount: minecart with furnace named "&6Current Quantity: %{_currentAmount}%"
+	shop.style.buttons.current_amount: minecart with furnace named "&6Current Quantity: %{_amount}%"
 	shop.style.buttons.current_amount.slot: 4
 
 	# Increase Count Button
