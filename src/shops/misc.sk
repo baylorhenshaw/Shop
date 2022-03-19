@@ -14,6 +14,7 @@ on load:
 	shop_registerItem("Essentials & Misc.", "Enchanting Table", Enchanting Table, 1000, 0, false)
 	shop_registerItem("Essentials & Misc.", "Bookshelf", Bookshelf, {@price}, 0)
 	shop_registerItem("Essentials & Misc.", "Book", Book, {@price}, 0)
+	shop_registerItem("Essentials & Misc.", "Lapis", Lapis, {@price}, 0)
 	shop_registerItem("Essentials & Misc.", "Anvil", Anvil, 1000, 0, false)
 	shop_registerItem("Essentials & Misc.", "Arrow", Arrow, 50, 0)
 	shop_registerItem("Essentials & Misc.", "Soul Sand", Soul Sand, 1000, 0)
