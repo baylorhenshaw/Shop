@@ -25,18 +25,25 @@ options:
 command /shop [<string>] [<string>]:
 	executable by: player
 	trigger:
-		if arg-1 is not set:
-			shop_openMainMenu(player)
 
-		else if arg-1 is "open":
-			if arg-2 is set:
-				if shop_getCategories() contains arg-2:
-					shop_openCategory(player, arg-2)
-				else:
-					message "&cThat category does not exist!" to player
-					play sound "block.note_block.bass" to player
+		if arg-1 is not set:
+			if "%region at player%" doesn't contain "shop":
+				execute console command "/essentials:warp shop %player%"
 			else:
 				shop_openMainMenu(player)
+
+		else if arg-1 is "open":
+			if "%region at player%" doesn't contain "shop":
+				execute console command "/essentials:warp shop %player%"
+			else:
+				if arg-2 is set:
+					if shop_getCategories() contains arg-2:
+						shop_openCategory(player, arg-2)
+					else:
+						message "&cThat category does not exist!" to player
+						play sound "block.note_block.bass" to player
+				else:
+					shop_openMainMenu(player)
 
 		else if arg-1 is "help":
 
